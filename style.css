@@ -288,6 +288,7 @@ nav ul li a:hover::after{
     display: inline-block;
     background: #ff00ff;
     align-items: center;
+    margin-left: 80px;
 }
 .contact-right form{
     width: 100%;
@@ -416,9 +417,9 @@ nav .fas{
     transform: scale(1.4);
 }
 
-  footer {
+  /* footer {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-  }
+  } */
