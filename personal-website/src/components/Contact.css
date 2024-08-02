@@ -1,0 +1,116 @@
+#contact {
+    padding: 50px 0;
+  }
+  .contact-left {
+    flex-basis: 35%;
+  }
+  .contact-right {
+    flex-basis: 60%;
+  }
+  .contact-left p {
+    margin-top: 30px;
+  }
+  .contact-left p i {
+    color: #ff00ff;
+    margin-right: 15px;
+    font-size: 25px;
+  }
+  .social-icons {
+    margin-top: 30px;
+  }
+  .social-icons a {
+    text-decoration: none;
+    font-size: 30px;
+    margin-right: 15px;
+    color: #ababab;
+    display: inline-block;
+    transition: transform 0.5s;
+  }
+  .social-icons a:hover {
+    color: #ff00ff;
+    transform: translateY(-5px);
+  }
+  .btn {
+    display: inline-block;
+    background: #ff00ff;
+    color: #fff;
+    padding: 14px 28px;
+    font-size: 18px;
+    font-weight: 500;
+    border: none;
+    border-radius: 30px;
+    text-decoration: none;
+    text-align: center;
+    cursor: pointer;
+    transition: background 0.3s, transform 0.3s;
+  }
+  .btn:hover {
+    background: #d400d4;
+    transform: translateY(-3px);
+  }
+  .btn:active {
+    background: #b000b0;
+    transform: translateY(0);
+  }
+  .btn.btn2 {
+    margin-top: 20px;
+  }
+  .contact-right form {
+    width: 100%;
+  }
+  form input, form textarea {
+    width: 100%;
+    border: 0;
+    outline: none;
+    background: #262626;
+    padding: 15px;
+    margin: 15px 0;
+    color: #fff;
+    font-size: 18px;
+    border-radius: 6px;
+  }
+  form .btn2 {
+    padding: 14px 60px;
+    font-size: 18px;
+    margin-top: 10px; /* Adjust this margin to move the button up */
+    cursor: pointer;
+    align-items: center;
+  }
+  .copyright {
+    width: 100%;
+    text-align: center;
+    padding: 25px 0;
+    background: #262626;
+    font-weight: 300;
+    margin-top: 20px;
+  }
+  .copyright i {
+    color: #ff00ff;
+  }
+  .copyright a {
+    color: #ff00ff;
+    text-decoration: none;
+  }
+  #msg {
+    color: #61b752;
+    margin-top: -40px;
+    display: block;
+  }
+  #footer-links img {
+    width: 30px;
+    height: 30px;
+  }
+  #footer-links {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    margin: 20px;
+    width: 320px;
+  }
+  #footer-links a {
+    transition: transform 0.2s ease-in-out;
+  }
+  #footer-links a:hover {
+    transform: scale(1.4);
+  }
+  
