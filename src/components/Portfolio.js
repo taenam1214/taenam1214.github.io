@@ -31,6 +31,14 @@ const Portfolio = () => {
               <a href="https://github.com/taenam1214/CryptoWalletAdoption"><i className="fas fa-external-link-alt"></i></a>
             </div>
           </div>
+          <div className="work">
+            <img src="/images/go.webp" alt="TaskMaster: Go" />
+            <div className="layer">
+              <h3>TaskMaster: Go</h3>
+              <p>lightweight and secure task management API built with Go.</p>
+              <a href="lightweight and secure task management API built with Go."><i className="fas fa-external-link-alt"></i></a>
+            </div>
+          </div>
         </div>
       </div>
     </div>
