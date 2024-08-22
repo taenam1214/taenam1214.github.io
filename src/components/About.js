@@ -17,7 +17,7 @@ const About = () => {
           </div>
           <div className="about-col-2">
             <h1 className="sub-title">About Me</h1>
-            <p>Hi! I'm Taenam Kim, Data Science student at the University of Wisconsin, Madison...</p>
+            <p>Hi! I'm Taenam Kim, Computer Science student at the University of Wisconsin, Madison...</p>
             <div className="tab-titles">
               <p
                 className={`tab-links ${activeTab === 'skills' ? 'active-link' : ''}`}
