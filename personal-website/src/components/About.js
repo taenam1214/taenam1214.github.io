@@ -42,7 +42,7 @@ const About = () => {
               <ul>
                 <li><span>Project Management</span><br />Asana, Jira, Slab</li>
                 <li><span>FrontEnd</span><br />JavaScript, React, React Native, Next.js</li>
-                <li><span>BackEnd</span><br />TypeScript, GraphQL, MongoDB</li>
+                <li><span>BackEnd</span><br />TypeScript, GraphQL, MongoDB, Go</li>
                 <li><span>Data Analysis</span><br />Python & R programming</li>
                 <li><span>Other Programming Languages</span><br />Java, C</li>
               </ul>
@@ -57,7 +57,7 @@ const About = () => {
             </div>
             <div className={`tab-contents ${activeTab === 'education' ? 'active-tab' : ''}`} id="education">
               <ul>
-                <li><span>University of Wisconsin, Madison: BS Data Science</span><br />Graduating on December 2024</li>
+                <li><span>University of Wisconsin, Madison: BS Computer Science</span><br />Graduating on December 2024</li>
               </ul>
             </div>
           </div>
