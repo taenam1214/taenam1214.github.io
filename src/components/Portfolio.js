@@ -32,7 +32,7 @@ const Portfolio = () => {
             <div className="layer">
               <h3>TaskMaster: Go</h3>
               <p>Lightweight and secure task management API built with Go.</p>
-              <a href="https://github.com/your-repo-link" target="_blank" rel="noopener noreferrer">
+              <a href="https://github.com/taenam1214/TaskMaster-Go" target="_blank" rel="noopener noreferrer">
                 <img src="/images/github3.png" alt="GitHub link" className="github-icon" />
               </a>
             </div>
