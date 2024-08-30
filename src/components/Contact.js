@@ -50,7 +50,7 @@ const Contact = () => {
               <a href=""><i className="fab fa-instagram"></i></a>
               <a href="https://www.linkedin.com/in/taenamkim/"><i className="fab fa-linkedin"></i></a>
             </div>
-            <a href="/images/Taenam_Resume_SW_2024_.pdf" download className="btn btn2">Download CV</a>
+            <a href="/images/Taenam_Resume_SW_Final.pdf" download className="btn btn2">Download CV</a>
           </div>
           <div className="contact-right">
             <form id="contact-form" onSubmit={sendEmail}>
