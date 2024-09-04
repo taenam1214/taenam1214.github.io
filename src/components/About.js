@@ -40,11 +40,11 @@ const About = () => {
             </div>
             <div className={`tab-contents ${activeTab === 'skills' ? 'active-tab' : ''}`} id="skills">
               <ul>
-                <li><span>Project Management</span><br />Asana, Jira, Slab</li>
+                <li><span>Project Management</span><br />Asana, Jira, Slab, Confluence</li>
                 <li><span>FrontEnd</span><br />JavaScript, React, React Native, Next.js</li>
-                <li><span>BackEnd</span><br />TypeScript, GraphQL, MongoDB, Go</li>
+                <li><span>BackEnd</span><br />TypeScript, GraphQL, MongoDB, Go, mySQL</li>
                 <li><span>Data Analysis</span><br />Python & R programming</li>
-                <li><span>Other Programming Languages</span><br />Java, C</li>
+                <li><span>Others</span><br />Java, C, SQL</li>
               </ul>
             </div>
             <div className={`tab-contents ${activeTab === 'experience' ? 'active-tab' : ''}`} id="experience">
@@ -52,7 +52,7 @@ const About = () => {
                 <li><span>June 2024 - Current</span><br />Software Engineer at Forbes</li>
                 <li><span>May 2024 - Current</span><br />AI Research intern at People and Robotics</li>
                 <li><span>September 2023 - Current</span><br />Working on an event App called Social To Do</li>
-                <li><span>June 2023 - August 2023</span><br />Business Analyst intern at Societe Generale</li>
+                <li><span>June 2023 - August 2023</span><br />Data Analyst intern at Societe Generale</li>
               </ul>
             </div>
             <div className={`tab-contents ${activeTab === 'education' ? 'active-tab' : ''}`} id="education">
