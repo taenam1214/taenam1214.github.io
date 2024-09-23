@@ -51,8 +51,8 @@ const About = () => {
               <ul>
                 <li><span>June 2024 - Current</span><br />Software Engineer at Forbes</li>
                 <li><span>May 2024 - Current</span><br />AI Research intern at People and Robotics</li>
-                <li><span>September 2023 - Current</span><br />Working on an event App called Social To Do</li>
-                <li><span>June 2023 - August 2023</span><br />Data Analyst intern at Societe Generale</li>
+                <li><span>September 2023 - Current</span><br />Developing a Social Media application called Social To Do</li>
+                <li><span>June 2023 - August 2023</span><br />Data Analyst intern at Societe Generale Corporate and Investment Banking</li>
               </ul>
             </div>
             <div className={`tab-contents ${activeTab === 'education' ? 'active-tab' : ''}`} id="education">
