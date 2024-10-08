@@ -7,6 +7,17 @@ const Portfolio = () => {
       <div className="container">
         <h1 className="sub-title">Projects</h1>
         <div className="work-list">
+        {/* <div className="work">
+            <img src="/images/work-1.png" alt="Social-To-Do" />
+            <div className="layer">
+              <h3>Social-To-Do</h3>
+              <p>React Native app designed to seamlessly blend productivity with social engagement. It offers a unique platform where users can not only manage their tasks efficiently but also connect with friends, share progress, and interact through a social feed.</p>
+              <a href="https://github.com/A9ine/Social-To-Do" target="_blank" rel="noopener noreferrer">
+                <img src="/images/github3.png" alt="GitHub link" className="github-icon" />
+              </a>
+            </div>
+          </div> */}
+          
           <div className="work">
             <img src="/images/work-1.png" alt="Social-To-Do" />
             <div className="layer">
