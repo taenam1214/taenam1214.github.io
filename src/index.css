@@ -1,13 +1,52 @@
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  * {
+    @apply scroll-smooth;
+  }
+
+  body {
+    @apply bg-dark text-white font-sans antialiased m-0;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+@layer utilities {
+  .glass-effect {
+    @apply bg-white/5 backdrop-blur-lg border border-white/10;
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+  }
+
+  .glass-effect-strong {
+    @apply bg-white/10 backdrop-blur-xl border border-white/20;
+    backdrop-filter: blur(24px);
+    -webkit-backdrop-filter: blur(24px);
+  }
+
+  .neumorphic {
+    @apply bg-gradient-to-br from-white/10 to-white/5;
+    box-shadow:
+      -10px -10px 30px rgba(255, 255, 255, 0.05),
+      10px 10px 30px rgba(0, 0, 0, 0.5);
+  }
+
+  .gradient-text {
+    @apply bg-gradient-to-r from-magenta via-magenta-400 to-cyan-500 bg-clip-text text-transparent;
+  }
+
+  .perspective-1000 {
+    perspective: 1000px;
+  }
+
+  .preserve-3d {
+    transform-style: preserve-3d;
+  }
+
+  .backface-hidden {
+    backface-visibility: hidden;
+  }
 }
