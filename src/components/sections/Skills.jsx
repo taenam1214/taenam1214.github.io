@@ -85,7 +85,7 @@ const SkillCategory = ({ category, index, hasIntersected }) => {
         progressBar,
         { width: '0%' },
         {
-          width: `${skill.level}%`,
+          width: '100%',
           duration: 1.5,
           delay: index * 0.2 + i * 0.1,
           ease: 'power3.out',
@@ -110,12 +110,11 @@ const SkillCategory = ({ category, index, hasIntersected }) => {
             viewport={{ once: true }}
             transition={{ delay: skillIndex * 0.05 }}
           >
-            <div className="flex items-center justify-between mb-2">
+            <div className="flex items-center mb-2">
               <div className="flex items-center gap-2">
                 <span className="text-xl">{skill.icon}</span>
                 <span className="text-white font-medium">{skill.name}</span>
               </div>
-              <span className="text-sm text-white/50">{skill.level}%</span>
             </div>
 
             {/* Progress Bar */}
