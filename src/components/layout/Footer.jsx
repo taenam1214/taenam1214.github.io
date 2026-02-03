@@ -48,7 +48,7 @@ const Footer = () => {
 
           {/* Resume Download Button */}
           <motion.a
-            href="/resume.pdf"
+            href="/images/TaenamKim_Resume_SWE.pdf"
             download
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
