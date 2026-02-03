@@ -8,8 +8,8 @@ export const projects = [
     technologies: ['React Native', 'Node.js', 'PostgreSQL', 'AWS', 'Docker', 'OpenAI API', 'Redux', 'Expo'],
     category: 'mobile',
     featured: true,
-    github: null, // Add GitHub link later
-    demo: null, // Add demo link later
+    github: 'https://github.com/taenam1214/TeamBlur',
+    demo: null,
     year: '2024',
   },
   {
@@ -21,8 +21,8 @@ export const projects = [
     technologies: ['Next.js', 'React', 'Vercel', 'Figma'],
     category: 'web',
     featured: true,
-    github: null, // Add GitHub link later
-    demo: null, // Add demo link later
+    github: 'https://github.com/taenam1214/TeamBlur-Website',
+    demo: null,
     year: '2024',
   },
   {
@@ -34,7 +34,7 @@ export const projects = [
     technologies: ['React', 'Vite', 'Chakra UI', 'Django', 'PostgreSQL', 'Redis'],
     category: 'web',
     featured: true,
-    github: null, // Add GitHub link later
+    github: 'https://github.com/taenam1214/market-entry-intel-platform',
     demo: null,
     year: '2024',
   },
@@ -60,22 +60,9 @@ export const projects = [
     technologies: ['Python', 'CNNs', 'RNNs', 'Detic', 'Computer Vision'],
     category: 'data',
     featured: false,
-    github: null,
+    github: 'https://github.com/Wisc-HCI/AQuA',
     demo: null,
     year: '2024',
-  },
-  {
-    id: 6,
-    title: 'UI Component Discovery Platform',
-    description: 'LLM-powered platform for discovering UI components, used by 78,000+ Samsung employees.',
-    longDescription: 'Built at Samsung Electronics. Developed scalable full-stack UI component discovery platform integrating AI APIs, Node.js microservices, React.js frontend, and RESTful APIs for internal web applications.',
-    image: null,
-    technologies: ['React', 'Node.js', 'Tailwind CSS', 'LLM APIs', 'RESTful APIs'],
-    category: 'web',
-    featured: false,
-    github: null,
-    demo: null,
-    year: '2025',
   },
 ];
 
