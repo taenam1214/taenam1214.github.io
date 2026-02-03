@@ -60,23 +60,25 @@ const Hero = () => {
           {/* CTA Buttons */}
           <motion.div
             variants={staggerItemVariant}
-            className="flex flex-col sm:flex-row gap-4 justify-center items-center"
+            className="flex flex-col gap-4 justify-center items-center"
           >
-            <MovingBorderButton
-              onClick={() => scrollToSection('#projects')}
-              className="px-8 py-4 text-white font-medium"
-              containerClassName="rounded-full"
-            >
-              View Projects
-            </MovingBorderButton>
+            <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
+              <MovingBorderButton
+                onClick={() => scrollToSection('#projects')}
+                className="px-8 py-4 text-white font-medium"
+                containerClassName="rounded-full"
+              >
+                View Projects
+              </MovingBorderButton>
 
-            <MovingBorderButton
-              onClick={() => scrollToSection('#contact')}
-              className="px-8 py-4 text-white font-medium"
-              containerClassName="rounded-full"
-            >
-              Get in Touch
-            </MovingBorderButton>
+              <MovingBorderButton
+                onClick={() => scrollToSection('#contact')}
+                className="px-8 py-4 text-white font-medium"
+                containerClassName="rounded-full"
+              >
+                Get in Touch
+              </MovingBorderButton>
+            </div>
 
             <a
               href="/images/TaenamKim_Resume_SWE.pdf"
