@@ -79,12 +79,12 @@ const Hero = () => {
             </MovingBorderButton>
           </motion.div>
 
-          {/* Scroll Indicator */}
+          {/* Scroll Indicator - hidden on mobile */}
           <motion.div
             initial={{ opacity: 0, y: -20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 2, duration: 1, repeat: Infinity, repeatType: "reverse" }}
-            className="absolute bottom-10 left-1/2 transform -translate-x-1/2"
+            className="hidden sm:block absolute bottom-6 left-1/2 transform -translate-x-1/2"
           >
             <div className="w-6 h-10 border-2 border-gray-400 dark:border-white/30 rounded-full flex justify-center p-2">
               <motion.div
