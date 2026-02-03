@@ -65,7 +65,7 @@ const Hero = () => {
             <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
               <MovingBorderButton
                 onClick={() => scrollToSection('#projects')}
-                className="px-8 py-4 text-white font-medium"
+                className="px-8 py-4 text-white font-medium w-44 text-center"
                 containerClassName="rounded-full"
               >
                 View Projects
@@ -73,7 +73,7 @@ const Hero = () => {
 
               <MovingBorderButton
                 onClick={() => scrollToSection('#contact')}
-                className="px-8 py-4 text-white font-medium"
+                className="px-8 py-4 text-white font-medium w-44 text-center"
                 containerClassName="rounded-full"
               >
                 Get in Touch
