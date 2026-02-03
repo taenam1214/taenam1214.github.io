@@ -77,6 +77,18 @@ const Hero = () => {
             >
               Get in Touch
             </MovingBorderButton>
+
+            <a
+              href="/images/TaenamKim_Resume_SWE.pdf"
+              download
+            >
+              <MovingBorderButton
+                className="px-8 py-4 text-white font-medium"
+                containerClassName="rounded-full"
+              >
+                Resume
+              </MovingBorderButton>
+            </a>
           </motion.div>
 
         </motion.div>
