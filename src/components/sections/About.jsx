@@ -18,19 +18,28 @@ const About = () => {
       const element = statsRef.current[index];
       if (!element) return;
 
-      const value = parseInt(stat.value);
-      if (isNaN(value)) return;
+      // Extract number from value (e.g., "1.8 Million+" -> 1.8, "20+" -> 20)
+      const numMatch = stat.value.match(/^[\d.]+/);
+      if (!numMatch) {
+        element.innerText = stat.value;
+        return;
+      }
+
+      const numValue = parseFloat(numMatch[0]);
+      const suffix = stat.value.slice(numMatch[0].length); // e.g., " Million+" or "+"
 
       gsap.fromTo(
         element,
         { innerText: 0 },
         {
-          innerText: value,
+          innerText: numValue,
           duration: 2,
           ease: 'power2.out',
-          snap: { innerText: 1 },
+          snap: { innerText: numValue % 1 === 0 ? 1 : 0.1 },
           onUpdate: function () {
-            element.innerText = Math.ceil(this.targets()[0].innerText) + '+';
+            const current = this.targets()[0].innerText;
+            const display = numValue % 1 === 0 ? Math.ceil(current) : parseFloat(current).toFixed(1);
+            element.innerText = display + suffix;
           },
         }
       );
