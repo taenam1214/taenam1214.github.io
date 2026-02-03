@@ -3,16 +3,16 @@
 export const SITE_CONFIG = {
   name: 'Taenam Kim',
   title: 'Software Engineer Portfolio',
-  description: 'Full-stack software engineer specializing in modern web development',
+  description: 'Software engineer and startup founder building products from 0 to 1',
   url: 'https://taenam1214.github.io',
-  email: 'taenam.kim@example.com', // Update with actual email
+  email: 'taenam356@outlook.com',
 };
 
 export const SOCIAL_LINKS = {
   github: 'https://github.com/taenam1214',
-  linkedin: 'https://linkedin.com/in/taenam-kim', // Update with actual LinkedIn
-  twitter: '', // Optional
-  email: 'mailto:taenam.kim@example.com', // Update with actual email
+  linkedin: 'https://www.linkedin.com/in/taenamkim/',
+  twitter: '',
+  email: 'mailto:taenam356@outlook.com',
 };
 
 export const NAVIGATION_ITEMS = [

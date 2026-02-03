@@ -50,10 +50,10 @@ const Contact = () => {
     setStatus({ type: '', message: '' });
 
     try {
-      // Replace these with your EmailJS credentials
-      const serviceId = 'YOUR_SERVICE_ID';
-      const templateId = 'YOUR_TEMPLATE_ID';
-      const userId = 'YOUR_USER_ID';
+      // EmailJS credentials
+      const serviceId = 'service_pwvf6yb';
+      const templateId = 'template_awq1a5q';
+      const userId = 'NZWgsBSWhwRYNQY65';
 
       await emailjs.send(
         serviceId,
