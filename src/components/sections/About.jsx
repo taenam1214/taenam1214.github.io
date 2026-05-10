@@ -49,7 +49,7 @@ const About = () => {
   return (
     <section id="about" className="relative min-h-screen flex items-center justify-center py-20 overflow-hidden">
       {/* Background Effects */}
-      <div className="absolute inset-0 bg-dark-50/30">
+      <div className="absolute inset-0 bg-gray-100/50 dark:bg-dark-50/30">
         <BackgroundBeams />
       </div>
 
@@ -71,9 +71,9 @@ const About = () => {
           {/* Bio Card */}
           <motion.div
             variants={staggerItemVariant}
-            className="bg-white/5 backdrop-blur-lg border border-white/10 rounded-2xl p-8 md:p-12 mb-12 hover:border-magenta/50 transition-colors duration-300"
+            className="bg-gray-900/5 dark:bg-white/5 backdrop-blur-lg border border-gray-900/10 dark:border-white/10 rounded-2xl p-8 md:p-12 mb-12 hover:border-magenta/50 transition-colors duration-300"
           >
-            <p className="text-lg md:text-xl text-white/80 leading-relaxed mb-8">
+            <p className="text-lg md:text-xl text-gray-700 dark:text-white/80 leading-relaxed mb-8">
               {aboutContent.bio}
             </p>
 
@@ -82,7 +82,7 @@ const About = () => {
               {aboutContent.highlights.map((highlight, index) => (
                 <div
                   key={index}
-                  className="flex items-center space-x-3 text-white/70"
+                  className="flex items-center space-x-3 text-gray-600 dark:text-white/70"
                 >
                   <div className="w-2 h-2 bg-magenta rounded-full flex-shrink-0" />
                   <span>{highlight}</span>
@@ -99,7 +99,7 @@ const About = () => {
             {aboutContent.stats.map((stat, index) => (
               <div
                 key={index}
-                className="bg-white/5 backdrop-blur-lg border border-white/10 rounded-2xl p-6 text-center hover:border-magenta/50 hover:scale-105 transition-all duration-300"
+                className="bg-gray-900/5 dark:bg-white/5 backdrop-blur-lg border border-gray-900/10 dark:border-white/10 rounded-2xl p-6 text-center hover:border-magenta/50 hover:scale-105 transition-all duration-300"
               >
                 <div
                   ref={(el) => (statsRef.current[index] = el)}
@@ -107,7 +107,7 @@ const About = () => {
                 >
                   {stat.value}
                 </div>
-                <div className="text-sm md:text-base text-white/60">{stat.label}</div>
+                <div className="text-sm md:text-base text-gray-500 dark:text-white/60">{stat.label}</div>
               </div>
             ))}
           </motion.div>
