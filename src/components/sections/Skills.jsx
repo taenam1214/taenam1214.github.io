@@ -25,7 +25,7 @@ const Skills = () => {
             <h2 className="text-4xl sm:text-5xl md:text-6xl font-bold mb-4">
               Skills & <span className="bg-clip-text text-transparent bg-gradient-to-r from-magenta to-cyan-500">Expertise</span>
             </h2>
-            <p className="text-lg text-white/70 max-w-2xl mx-auto">
+            <p className="text-lg text-gray-600 dark:text-white/70 max-w-2xl mx-auto">
               Technologies and tools I work with
             </p>
             <div className="w-20 h-1 bg-gradient-to-r from-magenta to-cyan-500 mx-auto rounded-full mt-4" />
@@ -43,7 +43,7 @@ const Skills = () => {
                 whileInView={{ opacity: 1, scale: 1 }}
                 viewport={{ once: true }}
                 transition={{ delay: index * 0.1 }}
-                className="px-6 py-3 rounded-full bg-gradient-to-r from-magenta/20 to-cyan-500/20 border border-magenta/30 text-white font-medium"
+                className="px-6 py-3 rounded-full bg-gradient-to-r from-magenta/20 to-cyan-500/20 border border-magenta/30 text-gray-900 dark:text-white font-medium"
               >
                 {highlight}
               </motion.span>
@@ -96,7 +96,7 @@ const SkillCategory = ({ category, index, hasIntersected }) => {
 
   return (
     <CardSpotlight className="p-6 h-full">
-      <h3 className="text-2xl font-bold text-white mb-6 flex items-center gap-2">
+      <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-6 flex items-center gap-2">
         <span className="w-2 h-2 bg-magenta rounded-full animate-pulse" />
         {category.category}
       </h3>
@@ -113,12 +113,12 @@ const SkillCategory = ({ category, index, hasIntersected }) => {
             <div className="flex items-center mb-2">
               <div className="flex items-center gap-2">
                 <span className="text-xl">{skill.icon}</span>
-                <span className="text-white font-medium">{skill.name}</span>
+                <span className="text-gray-900 dark:text-white font-medium">{skill.name}</span>
               </div>
             </div>
 
             {/* Progress Bar */}
-            <div className="h-2 bg-white/10 rounded-full overflow-hidden">
+            <div className="h-2 bg-gray-900/10 dark:bg-white/10 rounded-full overflow-hidden">
               <div
                 ref={(el) => (progressRefs.current[skillIndex] = el)}
                 className="h-full bg-gradient-to-r from-magenta to-cyan-500 rounded-full"
