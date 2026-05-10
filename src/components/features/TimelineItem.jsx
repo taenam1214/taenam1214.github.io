@@ -21,11 +21,11 @@ const TimelineItem = ({ experience, index }) => {
                 />
               )}
               <div>
-                <h3 className="text-xl font-bold text-white">{experience.role}</h3>
+                <h3 className="text-xl font-bold text-gray-900 dark:text-white">{experience.role}</h3>
                 <p className="text-magenta font-medium">{experience.company}</p>
               </div>
             </div>
-            <div className="flex items-center gap-4 text-sm text-white/60">
+            <div className="flex items-center gap-4 text-sm text-gray-600 dark:text-white/60">
               <span>{experience.period}</span>
               {experience.location && (
                 <>
@@ -40,20 +40,20 @@ const TimelineItem = ({ experience, index }) => {
           {experience.achievements && experience.achievements.length > 0 && (
             <button
               onClick={() => setIsExpanded(!isExpanded)}
-              className="p-2 rounded-full hover:bg-white/10 transition-colors"
+              className="p-2 rounded-full hover:bg-gray-900/10 dark:hover:bg-white/10 transition-colors"
               aria-label={isExpanded ? "Collapse" : "Expand"}
             >
               {isExpanded ? (
-                <IconChevronUp className="w-5 h-5 text-white/70" />
+                <IconChevronUp className="w-5 h-5 text-gray-700 dark:text-white/70" />
               ) : (
-                <IconChevronDown className="w-5 h-5 text-white/70" />
+                <IconChevronDown className="w-5 h-5 text-gray-700 dark:text-white/70" />
               )}
             </button>
           )}
         </div>
 
         {/* Description */}
-        <p className="text-white/80 leading-relaxed">{experience.description}</p>
+        <p className="text-gray-700 dark:text-white/80 leading-relaxed">{experience.description}</p>
 
         {/* Achievements - Expandable */}
         <AnimatePresence>
@@ -65,8 +65,8 @@ const TimelineItem = ({ experience, index }) => {
               transition={{ duration: 0.3 }}
               className="overflow-hidden"
             >
-              <div className="pt-4 border-t border-white/10">
-                <h4 className="text-sm font-semibold text-white/90 mb-3">Key Achievements:</h4>
+              <div className="pt-4 border-t border-gray-900/10 dark:border-white/10">
+                <h4 className="text-sm font-semibold text-gray-800 dark:text-white/90 mb-3">Key Achievements:</h4>
                 <ul className="space-y-2">
                   {experience.achievements.map((achievement, i) => (
                     <motion.li
@@ -74,7 +74,7 @@ const TimelineItem = ({ experience, index }) => {
                       initial={{ opacity: 0, x: -20 }}
                       animate={{ opacity: 1, x: 0 }}
                       transition={{ delay: i * 0.1 }}
-                      className="flex items-start gap-2 text-white/70"
+                      className="flex items-start gap-2 text-gray-700 dark:text-white/70"
                     >
                       <span className="text-magenta mt-1.5">▹</span>
                       <span>{achievement}</span>
