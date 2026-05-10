@@ -9,7 +9,7 @@ export const aboutContent = {
   bio: "I'm a software engineer and startup founder passionate about building products from 0 to 1. As a Founder and CEO at Blur, I architected and shipped a full-stack social platform to 2,000+ users on the App Store. I've built at Samsung Electronics, Forbes, and Société Générale, working across redesigning legacy applications and building new Backend APIs.",
   highlights: [
     "Startup founding & product development",
-    "Full-stack development (React, Node.js, AWS)",
+    "Full-stack development (End-to-end product ownership)",
     "Mobile app development (React Native, iOS)",
     "AI/ML integration & LLM applications",
   ],
