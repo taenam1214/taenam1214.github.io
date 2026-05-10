@@ -14,7 +14,7 @@ const Footer = () => {
   ].filter(link => link.href); // Only show links that are configured
 
   return (
-    <footer className="relative bg-dark-100 border-t border-white/10 py-12">
+    <footer className="relative bg-gray-100 dark:bg-dark-100 border-t border-gray-900/10 dark:border-white/10 py-12">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex flex-col items-center space-y-8">
           {/* Social Links */}
@@ -38,10 +38,10 @@ const Footer = () => {
                 target="_blank"
                 rel="noopener noreferrer"
                 variants={fadeInUp}
-                className="p-3 rounded-full bg-white/5 hover:bg-magenta/20 border border-white/10 hover:border-magenta transition-all duration-300 group"
+                className="p-3 rounded-full bg-gray-900/5 dark:bg-white/5 hover:bg-magenta/20 border border-gray-900/10 dark:border-white/10 hover:border-magenta transition-all duration-300 group"
                 aria-label={link.label}
               >
-                <link.icon className="h-5 w-5 text-white group-hover:text-magenta transition-colors" />
+                <link.icon className="h-5 w-5 text-gray-900 dark:text-white group-hover:text-magenta transition-colors" />
               </motion.a>
             ))}
           </motion.div>
@@ -66,7 +66,7 @@ const Footer = () => {
             whileInView={{ opacity: 1 }}
             viewport={{ once: true }}
             transition={{ delay: 0.4 }}
-            className="text-white/60 text-sm"
+            className="text-gray-600 dark:text-white/60 text-sm"
           >
             © {currentYear} {SITE_CONFIG.name}. All rights reserved.
           </motion.p>
