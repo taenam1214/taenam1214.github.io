@@ -1,14 +1,15 @@
-import React, { useRef } from "react";
+import React, { Children, useRef } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
 import { cn } from "../../utils/cn";
 
-export const Timeline = ({ data, activeFilter = "all" }) => {
+export const Timeline = ({ data, activeFilter = "all", children }) => {
   const ref = useRef(null);
   const { scrollYProgress } = useScroll({
     target: ref,
     offset: ["start end", "end start"],
   });
 
+  const childArray = Children.toArray(children);
   const filteredData = activeFilter === "all"
     ? data
     : data.filter(item => item.type === activeFilter);
@@ -26,14 +27,19 @@ export const Timeline = ({ data, activeFilter = "all" }) => {
       {/* Timeline Items */}
       <div className="space-y-12">
         {filteredData.map((item, index) => (
-          <TimelineItem key={item.id} item={item} index={index} />
+          <TimelineItem
+            key={item.id}
+            item={item}
+            index={index}
+            customContent={childArray[index]}
+          />
         ))}
       </div>
     </div>
   );
 };
 
-const TimelineItem = ({ item, index }) => {
+const TimelineItem = ({ item, index, customContent }) => {
   const isEven = index % 2 === 0;
 
   return (
@@ -58,16 +64,16 @@ const TimelineItem = ({ item, index }) => {
       {/* Content */}
       <div className={cn("md:col-span-1", isEven ? "md:col-start-1" : "md:col-start-2")}>
         <div className="ml-16 md:ml-0 md:px-8">
-          {item.children || (
-            <div className="bg-white/5 backdrop-blur-lg border border-white/10 rounded-xl p-6 hover:border-magenta/50 transition-all duration-300">
+          {customContent || item.children || (
+            <div className="bg-gray-900/5 dark:bg-white/5 backdrop-blur-lg border border-gray-900/10 dark:border-white/10 rounded-xl p-6 hover:border-magenta/50 transition-all duration-300">
               <div className="flex items-start justify-between mb-3">
                 <div>
-                  <h3 className="text-xl font-bold text-white">{item.role}</h3>
+                  <h3 className="text-xl font-bold text-gray-900 dark:text-white">{item.role}</h3>
                   <p className="text-magenta font-medium">{item.company}</p>
                 </div>
               </div>
-              <p className="text-sm text-white/60 mb-3">{item.period}</p>
-              <p className="text-white/80 mb-4">{item.description}</p>
+              <p className="text-sm text-gray-500 dark:text-white/60 mb-3">{item.period}</p>
+              <p className="text-gray-700 dark:text-white/80 mb-4">{item.description}</p>
               {item.technologies && (
                 <div className="flex flex-wrap gap-2">
                   {item.technologies.map((tech, i) => (
