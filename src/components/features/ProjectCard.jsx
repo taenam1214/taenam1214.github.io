@@ -22,9 +22,9 @@ const ProjectCard = ({ project, featured = false }) => {
                 <IconFolder className="w-6 h-6 text-magenta" />
               </div>
               <div>
-                <h3 className="text-xl font-bold text-white">{project.title}</h3>
+                <h3 className="text-xl font-bold text-gray-900 dark:text-white">{project.title}</h3>
                 {project.year && (
-                  <span className="text-sm text-white/50">{project.year}</span>
+                  <span className="text-sm text-gray-500 dark:text-white/50">{project.year}</span>
                 )}
               </div>
             </div>
@@ -36,10 +36,10 @@ const ProjectCard = ({ project, featured = false }) => {
                   href={project.github}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="p-2 rounded-lg hover:bg-white/10 transition-colors group"
+                  className="p-2 rounded-lg hover:bg-gray-900/10 dark:hover:bg-white/10 transition-colors group"
                   aria-label="GitHub"
                 >
-                  <IconBrandGithub className="w-5 h-5 text-white/70 group-hover:text-magenta transition-colors" />
+                  <IconBrandGithub className="w-5 h-5 text-gray-700 dark:text-white/70 group-hover:text-magenta transition-colors" />
                 </a>
               )}
               {project.demo && (
@@ -47,10 +47,10 @@ const ProjectCard = ({ project, featured = false }) => {
                   href={project.demo}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="p-2 rounded-lg hover:bg-white/10 transition-colors group"
+                  className="p-2 rounded-lg hover:bg-gray-900/10 dark:hover:bg-white/10 transition-colors group"
                   aria-label="Live Demo"
                 >
-                  <IconExternalLink className="w-5 h-5 text-white/70 group-hover:text-cyan-500 transition-colors" />
+                  <IconExternalLink className="w-5 h-5 text-gray-700 dark:text-white/70 group-hover:text-cyan-500 transition-colors" />
                 </a>
               )}
             </div>
@@ -64,16 +64,16 @@ const ProjectCard = ({ project, featured = false }) => {
                 alt={project.title}
                 className="w-full h-48 object-cover transition-transform duration-300 group-hover/image:scale-105"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-dark via-transparent to-transparent opacity-60" />
+              <div className="absolute inset-0 bg-gradient-to-t from-white dark:from-dark via-transparent to-transparent opacity-60" />
             </div>
           ) : (
-            <div className={`relative mb-4 rounded-lg overflow-hidden bg-gradient-to-br from-magenta/20 to-cyan-500/20 ${featured ? 'h-48' : 'h-32'} flex items-center justify-center border border-white/10`}>
+            <div className={`relative mb-4 rounded-lg overflow-hidden bg-gradient-to-br from-magenta/20 to-cyan-500/20 ${featured ? 'h-48' : 'h-32'} flex items-center justify-center border border-gray-900/10 dark:border-white/10`}>
               <IconFolder className={`${featured ? 'w-16 h-16' : 'w-12 h-12'} text-magenta/40`} />
             </div>
           )}
 
           {/* Description */}
-          <p className="text-white/70 leading-relaxed mb-4 flex-grow">
+          <p className="text-gray-700 dark:text-white/70 leading-relaxed mb-4 flex-grow">
             {featured && project.longDescription ? project.longDescription : project.description}
           </p>
 
@@ -86,13 +86,13 @@ const ProjectCard = ({ project, featured = false }) => {
                 whileInView={{ opacity: 1, scale: 1 }}
                 viewport={{ once: true }}
                 transition={{ delay: i * 0.05 }}
-                className="px-3 py-1 text-xs rounded-full bg-cyan-500/20 text-cyan-400 border border-cyan-500/30 hover:bg-cyan-500/30 transition-colors"
+                className="px-3 py-1 text-xs rounded-full bg-cyan-500/20 text-cyan-700 dark:text-cyan-400 border border-cyan-500/30 hover:bg-cyan-500/30 transition-colors"
               >
                 {tech}
               </motion.span>
             ))}
             {project.technologies.length > (featured ? 10 : 5) && (
-              <span className="px-3 py-1 text-xs rounded-full bg-white/5 text-white/50">
+              <span className="px-3 py-1 text-xs rounded-full bg-gray-900/5 dark:bg-white/5 text-gray-500 dark:text-white/50">
                 +{project.technologies.length - (featured ? 10 : 5)}
               </span>
             )}
