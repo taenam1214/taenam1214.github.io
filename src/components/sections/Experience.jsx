@@ -30,7 +30,7 @@ const Experience = () => {
             <h2 className="text-4xl sm:text-5xl md:text-6xl font-bold mb-4">
               My <span className="bg-clip-text text-transparent bg-gradient-to-r from-magenta to-cyan-500">Journey</span>
             </h2>
-            <p className="text-lg text-white/70 max-w-2xl mx-auto">
+            <p className="text-lg text-gray-600 dark:text-white/70 max-w-2xl mx-auto">
               A timeline of my professional experience and educational background
             </p>
             <div className="w-20 h-1 bg-gradient-to-r from-magenta to-cyan-500 mx-auto rounded-full mt-4" />
@@ -48,7 +48,7 @@ const Experience = () => {
                 className={`px-6 py-3 rounded-full font-medium transition-all duration-300 ${
                   activeFilter === category.id
                     ? 'bg-gradient-to-r from-magenta to-cyan-500 text-white shadow-lg shadow-magenta/30'
-                    : 'bg-white/5 text-white/70 hover:bg-white/10 border border-white/10 hover:border-white/20'
+                    : 'bg-gray-900/5 dark:bg-white/5 text-gray-700 dark:text-white/70 hover:bg-gray-900/10 dark:hover:bg-white/10 border border-gray-900/10 dark:border-white/10 hover:border-gray-900/20 dark:hover:border-white/20'
                 }`}
               >
                 {category.label}
