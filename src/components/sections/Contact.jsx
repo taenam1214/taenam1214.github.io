@@ -85,7 +85,7 @@ const Contact = () => {
   return (
     <section id="contact" className="relative min-h-screen py-20 overflow-hidden">
       {/* Background */}
-      <div className="absolute inset-0 bg-dark-50/30">
+      <div className="absolute inset-0 bg-gray-100/50 dark:bg-dark-50/30">
         <BackgroundBeams />
       </div>
 
@@ -101,7 +101,7 @@ const Contact = () => {
             <h2 className="text-4xl sm:text-5xl md:text-6xl font-bold mb-4">
               Get in <span className="bg-clip-text text-transparent bg-gradient-to-r from-magenta to-cyan-500">Touch</span>
             </h2>
-            <p className="text-lg text-white/70 max-w-2xl mx-auto">
+            <p className="text-lg text-gray-600 dark:text-white/70 max-w-2xl mx-auto">
               {contactContent.description}
             </p>
             <div className="w-20 h-1 bg-gradient-to-r from-magenta to-cyan-500 mx-auto rounded-full mt-4" />
@@ -110,16 +110,16 @@ const Contact = () => {
           {/* Contact Form */}
           <motion.div
             variants={staggerItemVariant}
-            className="bg-white/5 backdrop-blur-lg border border-white/10 rounded-2xl p-8 md:p-12"
+            className="bg-gray-900/5 dark:bg-white/5 backdrop-blur-lg border border-gray-900/10 dark:border-white/10 rounded-2xl p-8 md:p-12"
           >
             <form onSubmit={handleSubmit} className="space-y-6">
               {/* Name Input */}
               <div>
-                <label htmlFor="name" className="block text-white font-medium mb-2">
+                <label htmlFor="name" className="block text-gray-900 dark:text-white font-medium mb-2">
                   Name
                 </label>
                 <div className="relative">
-                  <div className="absolute left-4 top-1/2 transform -translate-y-1/2 text-white/50">
+                  <div className="absolute left-4 top-1/2 transform -translate-y-1/2 text-gray-500 dark:text-white/50">
                     <IconUser className="w-5 h-5" />
                   </div>
                   <input
@@ -128,7 +128,7 @@ const Contact = () => {
                     name="name"
                     value={formData.name}
                     onChange={handleChange}
-                    className="w-full bg-white/5 border border-white/10 rounded-lg px-12 py-4 text-white placeholder-white/30 focus:outline-none focus:border-magenta transition-colors"
+                    className="w-full bg-gray-900/5 dark:bg-white/5 border border-gray-900/10 dark:border-white/10 rounded-lg px-12 py-4 text-gray-900 dark:text-white placeholder-gray-500 dark:placeholder-white/30 focus:outline-none focus:border-magenta transition-colors"
                     placeholder="Your name"
                     required
                   />
@@ -137,11 +137,11 @@ const Contact = () => {
 
               {/* Email Input */}
               <div>
-                <label htmlFor="email" className="block text-white font-medium mb-2">
+                <label htmlFor="email" className="block text-gray-900 dark:text-white font-medium mb-2">
                   Email
                 </label>
                 <div className="relative">
-                  <div className="absolute left-4 top-1/2 transform -translate-y-1/2 text-white/50">
+                  <div className="absolute left-4 top-1/2 transform -translate-y-1/2 text-gray-500 dark:text-white/50">
                     <IconMail className="w-5 h-5" />
                   </div>
                   <input
@@ -150,7 +150,7 @@ const Contact = () => {
                     name="email"
                     value={formData.email}
                     onChange={handleChange}
-                    className="w-full bg-white/5 border border-white/10 rounded-lg px-12 py-4 text-white placeholder-white/30 focus:outline-none focus:border-magenta transition-colors"
+                    className="w-full bg-gray-900/5 dark:bg-white/5 border border-gray-900/10 dark:border-white/10 rounded-lg px-12 py-4 text-gray-900 dark:text-white placeholder-gray-500 dark:placeholder-white/30 focus:outline-none focus:border-magenta transition-colors"
                     placeholder="your.email@example.com"
                     required
                   />
@@ -159,11 +159,11 @@ const Contact = () => {
 
               {/* Message Input */}
               <div>
-                <label htmlFor="message" className="block text-white font-medium mb-2">
+                <label htmlFor="message" className="block text-gray-900 dark:text-white font-medium mb-2">
                   Message
                 </label>
                 <div className="relative">
-                  <div className="absolute left-4 top-4 text-white/50">
+                  <div className="absolute left-4 top-4 text-gray-500 dark:text-white/50">
                     <IconMessage className="w-5 h-5" />
                   </div>
                   <textarea
@@ -172,7 +172,7 @@ const Contact = () => {
                     value={formData.message}
                     onChange={handleChange}
                     rows="6"
-                    className="w-full bg-white/5 border border-white/10 rounded-lg px-12 py-4 text-white placeholder-white/30 focus:outline-none focus:border-magenta transition-colors resize-none"
+                    className="w-full bg-gray-900/5 dark:bg-white/5 border border-gray-900/10 dark:border-white/10 rounded-lg px-12 py-4 text-gray-900 dark:text-white placeholder-gray-500 dark:placeholder-white/30 focus:outline-none focus:border-magenta transition-colors resize-none"
                     placeholder="Your message..."
                     required
                   />
@@ -186,8 +186,8 @@ const Contact = () => {
                   animate={{ opacity: 1, y: 0 }}
                   className={`flex items-center gap-2 p-4 rounded-lg ${
                     status.type === 'success'
-                      ? 'bg-green-500/20 border border-green-500/30 text-green-400'
-                      : 'bg-red-500/20 border border-red-500/30 text-red-400'
+                      ? 'bg-green-500/20 border border-green-500/30 text-green-700 dark:text-green-400'
+                      : 'bg-red-500/20 border border-red-500/30 text-red-700 dark:text-red-400'
                   }`}
                 >
                   {status.type === 'success' ? (
@@ -223,8 +223,8 @@ const Contact = () => {
             </form>
 
             {/* Alternative Contact */}
-            <div className="mt-8 pt-8 border-t border-white/10 text-center">
-              <p className="text-white/60 mb-4">Or reach out directly via email</p>
+            <div className="mt-8 pt-8 border-t border-gray-900/10 dark:border-white/10 text-center">
+              <p className="text-gray-600 dark:text-white/60 mb-4">Or reach out directly via email</p>
               <a
                 href={`mailto:${contactContent.email}`}
                 className="text-magenta hover:text-cyan-500 transition-colors font-medium inline-flex items-center gap-2"
