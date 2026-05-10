@@ -30,7 +30,7 @@ export const CardSpotlight = ({ children, className, spotlightColor = "rgba(255,
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
       className={cn(
-        "relative overflow-hidden rounded-xl bg-white/5 backdrop-blur-lg border border-white/10",
+        "relative overflow-hidden rounded-xl bg-gray-900/5 dark:bg-white/5 backdrop-blur-lg border border-gray-900/10 dark:border-white/10",
         className
       )}
     >
