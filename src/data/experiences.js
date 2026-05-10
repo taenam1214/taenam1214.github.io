@@ -9,7 +9,9 @@ export const experiences = [
     startDate: '2025-10',
     description: 'Building ontology-driven healthcare features on the Nova platform with Palantir Foundry.',
     achievements: [
-      'Building ontology-driven healthcare features on the Nova platform with Palantir Foundry.',
+      'Built real-time call recording system with AI transcription using Palantir OSDK, React, and TanStack Table — linking audio files to patient transfer cases via ontology relationships with searchable history and live subscription updates',
+      'Developed cross-application header module with ontology-driven navigation and role-based licensing using Palantir Foundry SDK, React hooks, and TanStack Query, serving as shared infrastructure across TeleTracking\'s micro-frontends',
+      'Migrating a healthcare Facility Manager from Palantir Workshop to a React SPA using OSDK typed client for CRUD against Foundry ontology objects, with cascading location hierarchy navigation and Blueprint.js component integration',
     ],
     technologies: ['Palantir OSDK', 'Palantir Foundry', 'React', 'TypeScript', 'TanStack Query', 'TanStack Table', 'Blueprint.js'],
     logo: null,
