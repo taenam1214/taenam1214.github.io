@@ -19,7 +19,7 @@ const Projects = () => {
   return (
     <section id="projects" className="relative min-h-screen py-20 overflow-hidden">
       {/* Background */}
-      <div className="absolute inset-0 bg-dark-50/30" />
+      <div className="absolute inset-0 bg-gray-100/50 dark:bg-dark-50/30" />
 
       <div ref={ref} className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <motion.div
@@ -32,7 +32,7 @@ const Projects = () => {
             <h2 className="text-4xl sm:text-5xl md:text-6xl font-bold mb-4">
               Featured <span className="bg-clip-text text-transparent bg-gradient-to-r from-magenta to-cyan-500">Projects</span>
             </h2>
-            <p className="text-lg text-white/70 max-w-2xl mx-auto">
+            <p className="text-lg text-gray-600 dark:text-white/70 max-w-2xl mx-auto">
               A showcase of my recent work and side projects
             </p>
             <div className="w-20 h-1 bg-gradient-to-r from-magenta to-cyan-500 mx-auto rounded-full mt-4" />
@@ -50,7 +50,7 @@ const Projects = () => {
                 className={`px-6 py-3 rounded-full font-medium transition-all duration-300 ${
                   activeFilter === category.id
                     ? 'bg-gradient-to-r from-magenta to-cyan-500 text-white shadow-lg shadow-magenta/30'
-                    : 'bg-white/5 text-white/70 hover:bg-white/10 border border-white/10 hover:border-white/20'
+                    : 'bg-gray-900/5 dark:bg-white/5 text-gray-700 dark:text-white/70 hover:bg-gray-900/10 dark:hover:bg-white/10 border border-gray-900/10 dark:border-white/10 hover:border-gray-900/20 dark:hover:border-white/20'
                 }`}
               >
                 {category.label}
@@ -71,7 +71,7 @@ const Projects = () => {
               {/* Featured Projects */}
               {featuredProjects.length > 0 && (
                 <div className="mb-8">
-                  <h3 className="text-2xl font-bold text-white mb-6">Featured</h3>
+                  <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-6">Featured</h3>
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                     {featuredProjects.map((project) => (
                       <ProjectCard
@@ -88,7 +88,7 @@ const Projects = () => {
               {regularProjects.length > 0 && (
                 <div>
                   {featuredProjects.length > 0 && (
-                    <h3 className="text-2xl font-bold text-white mb-6">More Projects</h3>
+                    <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-6">More Projects</h3>
                   )}
                   <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                     {regularProjects.map((project) => (
@@ -105,7 +105,7 @@ const Projects = () => {
               {/* Empty State */}
               {filteredProjects.length === 0 && (
                 <div className="text-center py-20">
-                  <p className="text-white/50 text-lg">No projects found in this category.</p>
+                  <p className="text-gray-500 dark:text-white/50 text-lg">No projects found in this category.</p>
                 </div>
               )}
             </motion.div>
