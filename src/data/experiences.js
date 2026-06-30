@@ -116,7 +116,7 @@ export const experiences = [
     company: 'University of Wisconsin-Madison',
     role: 'Bachelor of Science in Computer Science',
     location: 'Madison, WI',
-    period: '2021 - 2025',
+    period: '2021 - 2024',
     startDate: '2021-09',
     description: 'Focused on software engineering, algorithms, and data structures.',
     achievements: [
