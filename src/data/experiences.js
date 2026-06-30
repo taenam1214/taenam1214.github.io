@@ -5,8 +5,8 @@ export const experiences = [
     company: 'TeleTracking Technologies',
     role: 'AI Foundry Software Engineer',
     location: 'Pittsburgh, PA',
-    period: 'October 2025 - Present',
-    startDate: '2025-10',
+    period: 'November 2025 - Present',
+    startDate: '2025-11',
     description: 'Building ontology-driven healthcare features on the Nova platform with Palantir Foundry.',
     achievements: [
       'Built real-time call recording system with AI transcription using Palantir OSDK, React, and TanStack Table — linking audio files to patient transfer cases via ontology relationships with searchable history and live subscription updates',
@@ -22,8 +22,8 @@ export const experiences = [
     company: 'Samsung Electronics',
     role: 'Software Engineer',
     location: 'South Korea',
-    period: 'June 2025 - September 2025',
-    startDate: '2025-06',
+    period: 'May 2025 - October 2025',
+    startDate: '2025-05',
     description: 'Developed a scalable full-stack UI component discovery platform powered by LLMs for 78,000+ employees.',
     achievements: [
       'Built full-stack UI component discovery platform integrating AI APIs and Node.js microservices',
@@ -40,7 +40,7 @@ export const experiences = [
     company: 'Blur',
     role: 'Founder and CEO',
     location: 'Madison, WI',
-    period: 'September 2024 - June 2025',
+    period: 'September 2024 - May 2025',
     startDate: '2024-09',
     description: 'Architected and built a full-stack social platform from 0 to 1, serving 2,000+ users.',
     achievements: [
@@ -80,8 +80,8 @@ export const experiences = [
     company: 'People and Robotics Lab',
     role: 'AI Research Intern',
     location: 'Madison, WI',
-    period: 'May 2024 - December 2024',
-    startDate: '2024-05',
+    period: 'September 2023 - May 2024',
+    startDate: '2023-09',
     description: 'Implemented Visual Learning Models using CNNs and RNNs for video analysis and object detection.',
     achievements: [
       'Implemented Visual Learning Model using CNNs and RNNs for video analysis',
