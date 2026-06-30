@@ -22,8 +22,8 @@ export const experiences = [
     company: 'Samsung Electronics',
     role: 'Software Engineer',
     location: 'South Korea',
-    period: 'May 2024 - October 2025',
-    startDate: '2025-05',
+    period: 'August 2024 - October 2025',
+    startDate: '2024-08',
     description: 'Developed a scalable full-stack UI component discovery platform powered by LLMs for 78,000+ employees.',
     achievements: [
       'Built full-stack UI component discovery platform integrating AI APIs and Node.js microservices',
@@ -40,7 +40,7 @@ export const experiences = [
     company: 'Blur',
     role: 'Founder and CEO',
     location: 'Madison, WI',
-    period: 'September 2024 - May 2025',
+    period: 'September 2024 - June 2025',
     startDate: '2024-09',
     description: 'Architected and built a full-stack social platform from 0 to 1, serving 2,000+ users.',
     achievements: [
