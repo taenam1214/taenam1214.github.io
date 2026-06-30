@@ -22,7 +22,7 @@ export const experiences = [
     company: 'Samsung Electronics',
     role: 'Software Engineer',
     location: 'South Korea',
-    period: 'May 2025 - October 2025',
+    period: 'May 2024 - October 2025',
     startDate: '2025-05',
     description: 'Developed a scalable full-stack UI component discovery platform powered by LLMs for 78,000+ employees.',
     achievements: [
