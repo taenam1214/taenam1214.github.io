@@ -24,7 +24,7 @@ export const MovingBorderButton = ({
           borderClassName
         )}
         style={{
-          background: "linear-gradient(90deg, #ff00ff, #00ffff, #ff00ff)",
+          background: "linear-gradient(90deg, #15e6a0, #22d3ee, #3b82f6)",
           backgroundSize: "200% 100%",
         }}
         animate={{

@@ -57,9 +57,9 @@ export const BackgroundBeams = ({ className }) => {
                 delay: Math.random() * 2,
               }}
             >
-              <stop stopColor="#ff00ff" stopOpacity="0" />
-              <stop stopColor="#ff00ff" />
-              <stop offset="1" stopColor="#00ffff" stopOpacity="0" />
+              <stop stopColor="#15e6a0" stopOpacity="0" />
+              <stop stopColor="#15e6a0" />
+              <stop offset="1" stopColor="#3b82f6" stopOpacity="0" />
             </motion.linearGradient>
           ))}
         </defs>

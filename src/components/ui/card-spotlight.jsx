@@ -1,7 +1,7 @@
 import React, { useRef, useState } from "react";
 import { cn } from "../../utils/cn";
 
-export const CardSpotlight = ({ children, className, spotlightColor = "rgba(255, 0, 255, 0.2)" }) => {
+export const CardSpotlight = ({ children, className, spotlightColor = "rgba(21, 230, 160, 0.2)" }) => {
   const divRef = useRef(null);
   const [position, setPosition] = useState({ x: 0, y: 0 });
   const [opacity, setOpacity] = useState(0);

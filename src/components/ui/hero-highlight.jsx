@@ -53,9 +53,9 @@ const BackgroundBeams = () => {
       >
         <defs>
           <linearGradient id="beam-gradient" x1="0%" y1="0%" x2="100%" y2="100%">
-            <stop offset="0%" stopColor="#ff00ff" stopOpacity="0" />
-            <stop offset="50%" stopColor="#ff00ff" stopOpacity="0.5" />
-            <stop offset="100%" stopColor="#00ffff" stopOpacity="0" />
+            <stop offset="0%" stopColor="#15e6a0" stopOpacity="0" />
+            <stop offset="50%" stopColor="#15e6a0" stopOpacity="0.5" />
+            <stop offset="100%" stopColor="#3b82f6" stopOpacity="0" />
           </linearGradient>
         </defs>
       </svg>
