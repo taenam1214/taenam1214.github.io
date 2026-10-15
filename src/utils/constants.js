@@ -40,7 +40,7 @@ export const BREAKPOINTS = {
 
 export const PARTICLE_CONFIG = {
   count: 80,
-  color: '#ff00ff',
+  color: '#15e6a0',
   speed: 1,
   maxDistance: 150,
 };

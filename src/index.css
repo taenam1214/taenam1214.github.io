@@ -35,7 +35,72 @@
   }
 
   .gradient-text {
-    @apply bg-gradient-to-r from-magenta via-magenta-400 to-cyan-500 bg-clip-text text-transparent;
+    @apply bg-gradient-to-r from-brand via-cyan-500 to-azure bg-clip-text text-transparent;
+  }
+
+  /* Editorial name reveal: blur-rise per line + a light sweep through the gradient */
+  .name-mask {
+    overflow: hidden;
+    display: block;
+    padding: 0 0.16em 0.1em 0;
+  }
+  .name-rise {
+    display: block;
+    transform: translateY(112%);
+    opacity: 0;
+    filter: blur(12px);
+    animation: name-reveal 1.05s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  }
+  .name-rise.is-delayed {
+    animation-delay: 0.16s;
+  }
+  .name-sheen {
+    background-size: 230% 100%;
+    background-position: 120% 0;
+    animation:
+      name-reveal 1.05s cubic-bezier(0.16, 1, 0.3, 1) 0.16s forwards,
+      name-sheen 2.2s cubic-bezier(0.4, 0, 0.2, 1) 0.75s both;
+  }
+
+  /* Tech ticker: edge-faded, seamless scroll */
+  .ticker-mask {
+    -webkit-mask-image: linear-gradient(90deg, transparent, #000 7%, #000 93%, transparent);
+    mask-image: linear-gradient(90deg, transparent, #000 7%, #000 93%, transparent);
+  }
+  .ticker-track {
+    display: inline-block;
+    white-space: nowrap;
+    animation: ticker 34s linear infinite;
+  }
+  .ticker-mask:hover .ticker-track {
+    animation-play-state: paused;
+  }
+
+  @keyframes name-reveal {
+    0% { transform: translateY(112%); opacity: 0; filter: blur(12px); }
+    55% { opacity: 1; filter: blur(0); }
+    100% { transform: translateY(0); opacity: 1; filter: blur(0); }
+  }
+  @keyframes name-sheen {
+    from { background-position: 120% 0; }
+    to { background-position: 0% 0; }
+  }
+  @keyframes ticker {
+    to { transform: translateX(-50%); }
+  }
+  @keyframes fade {
+    from { opacity: 0; transform: translateY(16px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .name-rise, .name-sheen {
+      transform: none !important;
+      opacity: 1 !important;
+      filter: none !important;
+      animation: none !important;
+    }
+    .ticker-track { animation: none !important; }
   }
 
   .perspective-1000 {
