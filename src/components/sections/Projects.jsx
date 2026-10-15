@@ -1,116 +1,178 @@
-import React, { useState } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
+import { IconBrandGithub, IconExternalLink } from '@tabler/icons-react';
 import { projects, projectCategories } from '../../data/projects';
-import ProjectCard from '../features/ProjectCard';
 import { useIntersectionObserver } from '../../hooks/useIntersectionObserver';
-import { staggerContainerVariant, staggerItemVariant } from '../../utils/animations';
+import { useReducedMotion } from '../../hooks/useReducedMotion';
+
+const SCRAMBLE_CHARS = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ#%&/01';
+
+const ProjectRow = ({ project, index, reduce }) => {
+  const [display, setDisplay] = useState(project.title);
+  const intervalRef = useRef(null);
+
+  useEffect(() => () => clearInterval(intervalRef.current), []);
+
+  const runScramble = () => {
+    if (reduce) return;
+    const target = project.title;
+    let frame = 0;
+    const dur = 20;
+    clearInterval(intervalRef.current);
+    intervalRef.current = setInterval(() => {
+      setDisplay(
+        target
+          .split('')
+          .map((c, i) => {
+            if (c === ' ') return ' ';
+            if (i < frame / (dur / target.length)) return target[i];
+            return SCRAMBLE_CHARS[Math.floor(Math.random() * SCRAMBLE_CHARS.length)];
+          })
+          .join('')
+      );
+      frame += 1;
+      if (frame > dur) {
+        clearInterval(intervalRef.current);
+        setDisplay(target);
+      }
+    }, 28);
+  };
+
+  const meta = [...project.technologies.slice(0, 4), project.year]
+    .filter(Boolean)
+    .join(' · ')
+    .toUpperCase();
+
+  return (
+    <motion.div
+      initial={{ opacity: 0, y: 24 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true, margin: '-60px' }}
+      transition={{ duration: 0.5, delay: index * 0.05 }}
+      onMouseEnter={runScramble}
+      className="group grid grid-cols-[46px_1fr_auto] md:grid-cols-[70px_14px_1fr_auto] items-center gap-5 md:gap-7 py-7 border-t border-gray-900/10 dark:border-white/[0.13] last:border-b transition-all duration-500 hover:pl-3 hover:bg-gradient-to-r hover:from-brand/[0.07] hover:to-transparent"
+    >
+      {/* Index */}
+      <span className="font-mono text-xl text-gray-400 dark:text-white/40 group-hover:text-brand transition-colors">
+        {String(index + 1).padStart(2, '0')}
+      </span>
+
+      {/* Constellation star (desktop only) */}
+      <span className="hidden md:block w-3 h-3 rounded-full bg-gray-400/40 dark:bg-white/30 group-hover:bg-cyan-500 group-hover:shadow-[0_0_18px_#22d3ee] group-hover:scale-150 transition-all duration-300" />
+
+      {/* Name + meta */}
+      <div className="min-w-0">
+        <h3 className="text-2xl sm:text-3xl md:text-[clamp(26px,4vw,52px)] font-bold tracking-tight leading-none text-gray-900 dark:text-white transition-all duration-300 group-hover:translate-x-2.5 group-hover:gradient-text">
+          {display}
+        </h3>
+        <p className="font-mono text-[11px] sm:text-xs text-gray-500 dark:text-white/45 mt-2 tracking-wide truncate">
+          {meta}
+        </p>
+      </div>
+
+      {/* Links */}
+      <div className="flex items-center gap-2">
+        {project.github && (
+          <a
+            href={project.github}
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label={`${project.title} on GitHub`}
+            className="p-2.5 rounded-full text-gray-600 dark:text-white/60 hover:text-brand hover:bg-gray-900/5 dark:hover:bg-white/10 transition-colors"
+          >
+            <IconBrandGithub className="w-5 h-5" />
+          </a>
+        )}
+        {project.demo && (
+          <a
+            href={project.demo}
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label={`${project.title} live demo`}
+            className="p-2.5 rounded-full text-gray-600 dark:text-white/60 hover:text-cyan-500 hover:bg-gray-900/5 dark:hover:bg-white/10 transition-colors"
+          >
+            <IconExternalLink className="w-5 h-5" />
+          </a>
+        )}
+      </div>
+    </motion.div>
+  );
+};
 
 const Projects = () => {
   const [activeFilter, setActiveFilter] = useState('all');
   const { ref, hasIntersected } = useIntersectionObserver({ threshold: 0.1 });
+  const reduce = useReducedMotion();
 
   const filteredProjects = activeFilter === 'all'
     ? projects
-    : projects.filter(project => project.category === activeFilter);
+    : projects.filter((project) => project.category === activeFilter);
 
-  const featuredProjects = filteredProjects.filter(p => p.featured);
-  const regularProjects = filteredProjects.filter(p => !p.featured);
+  // Featured first, then the rest — preserves the original emphasis.
+  const ordered = [
+    ...filteredProjects.filter((p) => p.featured),
+    ...filteredProjects.filter((p) => !p.featured),
+  ];
 
   return (
-    <section id="projects" className="relative min-h-screen py-20 overflow-hidden">
-      {/* Background */}
-      <div className="absolute inset-0 bg-gray-100/50 dark:bg-dark-50/30" />
-
-      <div ref={ref} className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+    <section id="projects" className="relative min-h-screen py-24 overflow-hidden">
+      <div ref={ref} className="max-w-6xl mx-auto px-[6vw] relative z-10">
+        {/* Section Title */}
         <motion.div
-          initial="hidden"
-          animate={hasIntersected ? "visible" : "hidden"}
-          variants={staggerContainerVariant}
+          initial={{ opacity: 0, y: 20 }}
+          animate={hasIntersected ? { opacity: 1, y: 0 } : {}}
+          transition={{ duration: 0.5 }}
+          className="mb-10"
         >
-          {/* Section Title */}
-          <motion.div variants={staggerItemVariant} className="text-center mb-16">
-            <h2 className="text-4xl sm:text-5xl md:text-6xl font-bold mb-4">
-              Featured <span className="bg-clip-text text-transparent bg-gradient-to-r from-magenta to-cyan-500">Projects</span>
-            </h2>
-            <p className="text-lg text-gray-600 dark:text-white/70 max-w-2xl mx-auto">
-              A showcase of my recent work and side projects
-            </p>
-            <div className="w-20 h-1 bg-gradient-to-r from-magenta to-cyan-500 mx-auto rounded-full mt-4" />
-          </motion.div>
-
-          {/* Filter Tabs */}
-          <motion.div
-            variants={staggerItemVariant}
-            className="flex flex-wrap justify-center gap-4 mb-12"
-          >
-            {projectCategories.map((category) => (
-              <button
-                key={category.id}
-                onClick={() => setActiveFilter(category.id)}
-                className={`px-6 py-3 rounded-full font-medium transition-all duration-300 ${
-                  activeFilter === category.id
-                    ? 'bg-gradient-to-r from-magenta to-cyan-500 text-white shadow-lg shadow-magenta/30'
-                    : 'bg-gray-900/5 dark:bg-white/5 text-gray-700 dark:text-white/70 hover:bg-gray-900/10 dark:hover:bg-white/10 border border-gray-900/10 dark:border-white/10 hover:border-gray-900/20 dark:hover:border-white/20'
-                }`}
-              >
-                {category.label}
-              </button>
-            ))}
-          </motion.div>
-
-          {/* Projects Grid */}
-          <AnimatePresence mode="wait">
-            <motion.div
-              key={activeFilter}
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              exit={{ opacity: 0 }}
-              transition={{ duration: 0.3 }}
-              className="max-w-7xl mx-auto"
-            >
-              {/* Featured Projects */}
-              {featuredProjects.length > 0 && (
-                <div className="mb-8">
-                  <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-6">Featured</h3>
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                    {featuredProjects.map((project) => (
-                      <ProjectCard
-                        key={project.id}
-                        project={project}
-                        featured={true}
-                      />
-                    ))}
-                  </div>
-                </div>
-              )}
-
-              {/* Regular Projects */}
-              {regularProjects.length > 0 && (
-                <div>
-                  {featuredProjects.length > 0 && (
-                    <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-6">More Projects</h3>
-                  )}
-                  <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                    {regularProjects.map((project) => (
-                      <ProjectCard
-                        key={project.id}
-                        project={project}
-                        featured={false}
-                      />
-                    ))}
-                  </div>
-                </div>
-              )}
-
-              {/* Empty State */}
-              {filteredProjects.length === 0 && (
-                <div className="text-center py-20">
-                  <p className="text-gray-500 dark:text-white/50 text-lg">No projects found in this category.</p>
-                </div>
-              )}
-            </motion.div>
-          </AnimatePresence>
+          <div className="font-mono text-xs sm:text-sm tracking-[0.3em] uppercase text-cyan-500 mb-3">
+            {'// Constellation — Selected Work'}
+          </div>
+          <h2 className="text-4xl sm:text-5xl md:text-6xl font-black tracking-tight">
+            Projects
+          </h2>
         </motion.div>
+
+        {/* Filter Tabs */}
+        <div className="flex flex-wrap gap-3 mb-6">
+          {projectCategories.map((category) => (
+            <button
+              key={category.id}
+              onClick={() => setActiveFilter(category.id)}
+              className={`px-5 py-2.5 rounded-full text-sm font-medium transition-all duration-300 ${
+                activeFilter === category.id
+                  ? 'bg-gradient-to-r from-brand to-azure text-dark shadow-lg shadow-brand/30'
+                  : 'bg-gray-900/5 dark:bg-white/5 text-gray-700 dark:text-white/70 border border-gray-900/10 dark:border-white/10 hover:border-brand/40'
+              }`}
+            >
+              {category.label}
+            </button>
+          ))}
+        </div>
+
+        {/* Project Rows */}
+        <AnimatePresence mode="wait">
+          <motion.div
+            key={activeFilter}
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.3 }}
+          >
+            {ordered.length > 0 ? (
+              ordered.map((project, index) => (
+                <ProjectRow key={project.id} project={project} index={index} reduce={reduce} />
+              ))
+            ) : (
+              <p className="text-center py-20 text-gray-500 dark:text-white/50 text-lg">
+                No projects found in this category.
+              </p>
+            )}
+          </motion.div>
+        </AnimatePresence>
+
+        <p className="font-mono text-gray-400 dark:text-white/40 text-xs sm:text-sm mt-6">
+          hover a row — watch it resolve ↑
+        </p>
       </div>
     </section>
   );
