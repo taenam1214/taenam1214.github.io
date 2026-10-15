@@ -6,7 +6,7 @@ import CustomCursor from './components/layout/CustomCursor';
 import Navigation from './components/layout/Navigation';
 import Footer from './components/layout/Footer';
 import PageTransition from './components/layout/PageTransition';
-import ParticleBackground from './components/features/ParticleBackground';
+import CosmicBackground from './components/features/CosmicBackground';
 import Hero from './components/sections/Hero';
 import About from './components/sections/About';
 import Experience from './components/sections/Experience';
@@ -22,20 +22,26 @@ function AppContent() {
     restDelta: 0.001
   });
 
-  // Native smooth scrolling (no delay)
+  // Lenis inertial smooth scrolling
   useEffect(() => {
-    // Add smooth scroll behavior to html element
-    document.documentElement.style.scrollBehavior = 'smooth';
+    const lenis = new Lenis({ duration: 1.1, smoothWheel: true });
+    let rafId;
+    const raf = (time) => {
+      lenis.raf(time);
+      rafId = requestAnimationFrame(raf);
+    };
+    rafId = requestAnimationFrame(raf);
 
     return () => {
-      document.documentElement.style.scrollBehavior = '';
+      cancelAnimationFrame(rafId);
+      lenis.destroy();
     };
   }, []);
 
   return (
     <div className="bg-white dark:bg-dark text-gray-900 dark:text-white min-h-screen relative overflow-x-hidden transition-colors duration-300">
-      {/* Particle Background */}
-      <ParticleBackground />
+      {/* Cosmic WebGL Background */}
+      <CosmicBackground />
 
       {/* Custom Cursor */}
       <CustomCursor />
