@@ -16,13 +16,41 @@ export const skills = [
     category: 'Backend Development',
     items: [
       { name: 'Node.js', level: 90, icon: '🟢' },
+      { name: 'Fastify', level: 85, icon: '⚡' },
       { name: 'Express', level: 88, icon: '🚂' },
       { name: 'Python', level: 85, icon: '🐍' },
       { name: 'Django', level: 80, icon: '🎯' },
       { name: 'PostgreSQL', level: 85, icon: '🐘' },
+      { name: 'Redis', level: 85, icon: '🧱' },
       { name: 'MongoDB', level: 82, icon: '🍃' },
       { name: 'GraphQL', level: 78, icon: '◼️' },
       { name: 'REST APIs', level: 92, icon: '🔌' },
+    ],
+  },
+  {
+    category: 'Mobile & Cross-Platform',
+    items: [
+      { name: 'Swift', level: 80, icon: '🦅' },
+      { name: 'SwiftUI', level: 80, icon: '📱' },
+      { name: 'React Native', level: 90, icon: '📲' },
+      { name: 'Expo', level: 88, icon: '🚀' },
+      { name: 'Firebase', level: 85, icon: '🔥' },
+      { name: 'MapKit / CoreLocation', level: 75, icon: '🗺️' },
+      { name: 'iOS / App Store', level: 82, icon: '🍎' },
+      { name: 'PWA', level: 85, icon: '📦' },
+    ],
+  },
+  {
+    category: 'Systems & Data Engineering',
+    items: [
+      { name: 'Event-Driven Architecture', level: 85, icon: '🔀' },
+      { name: 'Kafka / Redpanda', level: 80, icon: '🌊' },
+      { name: 'WebSockets', level: 85, icon: '🔗' },
+      { name: 'Stream Processing', level: 80, icon: '⚙️' },
+      { name: 'Distributed Systems', level: 80, icon: '🕸️' },
+      { name: 'System Design', level: 85, icon: '🏛️' },
+      { name: 'AI Agents', level: 82, icon: '🤖' },
+      { name: 'Local-First / Offline', level: 82, icon: '💾' },
     ],
   },
   {
@@ -55,9 +83,11 @@ export const skills = [
 
 export const skillHighlights = [
   'Full-Stack Development',
+  'Event-Driven Systems',
+  'AI Agent Systems',
+  'Local-First Apps',
   'Cloud Architecture',
-  'Agile Methodologies',
   'Performance Optimization',
-  'Team Collaboration',
+  'Agile Methodologies',
   'Technical Leadership',
 ];
