@@ -27,8 +27,11 @@ const Experience = () => {
         >
           {/* Section Title */}
           <motion.div variants={staggerItemVariant} className="text-center mb-16">
+            <div className="font-mono text-xs sm:text-sm tracking-[0.3em] uppercase text-cyan-500 mb-3">
+              {'// Timeline'}
+            </div>
             <h2 className="text-4xl sm:text-5xl md:text-6xl font-bold mb-4">
-              My <span className="bg-clip-text text-transparent bg-gradient-to-r from-magenta to-cyan-500">Journey</span>
+              My <span className="bg-clip-text text-transparent bg-gradient-to-r from-brand via-cyan-500 to-azure">Journey</span>
             </h2>
             <p className="text-lg text-gray-600 dark:text-white/70 max-w-2xl mx-auto">
               A timeline of my professional experience and educational background

@@ -8,7 +8,6 @@ const Navigation = () => {
   const { resolvedTheme, toggleTheme } = useTheme();
 
   const handleThemeToggle = () => {
-    console.log('Theme toggling from:', resolvedTheme);
     toggleTheme();
   };
 

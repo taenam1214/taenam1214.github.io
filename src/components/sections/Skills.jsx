@@ -22,8 +22,11 @@ const Skills = () => {
         >
           {/* Section Title */}
           <motion.div variants={staggerItemVariant} className="text-center mb-16">
+            <div className="font-mono text-xs sm:text-sm tracking-[0.3em] uppercase text-cyan-500 mb-3">
+              {'// Toolkit'}
+            </div>
             <h2 className="text-4xl sm:text-5xl md:text-6xl font-bold mb-4">
-              Skills & <span className="bg-clip-text text-transparent bg-gradient-to-r from-magenta to-cyan-500">Expertise</span>
+              Skills & <span className="bg-clip-text text-transparent bg-gradient-to-r from-brand via-cyan-500 to-azure">Expertise</span>
             </h2>
             <p className="text-lg text-gray-600 dark:text-white/70 max-w-2xl mx-auto">
               Technologies and tools I work with

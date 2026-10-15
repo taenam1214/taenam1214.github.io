@@ -62,8 +62,11 @@ const About = () => {
         >
           {/* Section Title */}
           <motion.div variants={staggerItemVariant} className="text-center mb-16">
+            <div className="font-mono text-xs sm:text-sm tracking-[0.3em] uppercase text-cyan-500 mb-3">
+              {'// Profile'}
+            </div>
             <h2 className="text-4xl sm:text-5xl md:text-6xl font-bold mb-4">
-              About <span className="bg-clip-text text-transparent bg-gradient-to-r from-magenta to-cyan-500">Me</span>
+              About <span className="bg-clip-text text-transparent bg-gradient-to-r from-brand via-cyan-500 to-azure">Me</span>
             </h2>
             <div className="w-20 h-1 bg-gradient-to-r from-magenta to-cyan-500 mx-auto rounded-full" />
           </motion.div>
