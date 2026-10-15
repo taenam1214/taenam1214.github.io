@@ -48,7 +48,7 @@ export const projects = [
     category: 'web',
     featured: true,
     github: null,
-    demo: null,
+    demo: 'https://www.rivora-app.com/',
     year: '2026',
   },
   {
