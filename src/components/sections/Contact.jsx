@@ -1,28 +1,21 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import emailjs from 'emailjs-com';
-import { IconMail, IconUser, IconMessage, IconSend, IconCheck, IconX } from '@tabler/icons-react';
+import { IconMail, IconBrandGithub, IconBrandLinkedin, IconSend, IconCheck, IconX, IconExternalLink } from '@tabler/icons-react';
 import { contactContent } from '../../data/content';
+import { SOCIAL_LINKS } from '../../utils/constants';
 import { useIntersectionObserver } from '../../hooks/useIntersectionObserver';
 import { staggerContainerVariant, staggerItemVariant } from '../../utils/animations';
-import { MovingBorderButton } from '../ui/moving-border';
 import { BackgroundBeams } from '../ui/background-beams';
 
 const Contact = () => {
   const { ref, hasIntersected } = useIntersectionObserver({ threshold: 0.1 });
-  const [formData, setFormData] = useState({
-    name: '',
-    email: '',
-    message: '',
-  });
+  const [formData, setFormData] = useState({ name: '', email: '', message: '' });
   const [status, setStatus] = useState({ type: '', message: '' });
   const [isSubmitting, setIsSubmitting] = useState(false);
 
   const handleChange = (e) => {
-    setFormData({
-      ...formData,
-      [e.target.name]: e.target.value,
-    });
+    setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
   const validateForm = () => {
@@ -43,7 +36,6 @@ const Contact = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-
     if (!validateForm()) return;
 
     setIsSubmitting(true);
@@ -82,9 +74,18 @@ const Contact = () => {
     }
   };
 
+  const channels = [
+    { key: 'email', value: contactContent.email, href: `mailto:${contactContent.email}`, Icon: IconMail },
+    { key: 'github', value: 'github.com/taenam1214', href: SOCIAL_LINKS.github, Icon: IconBrandGithub },
+    { key: 'linkedin', value: 'in/taenamkim', href: SOCIAL_LINKS.linkedin, Icon: IconBrandLinkedin },
+  ];
+
+  const inputClass =
+    'w-full bg-gray-900/5 dark:bg-white/5 border border-gray-900/10 dark:border-white/10 rounded-lg px-4 py-3 text-gray-900 dark:text-white placeholder-gray-400 dark:placeholder-white/30 focus:outline-none focus:border-brand focus:ring-1 focus:ring-brand/40 transition-colors';
+  const labelClass = 'block font-mono text-xs uppercase tracking-[0.15em] text-cyan-500 mb-2';
+
   return (
-    <section id="contact" className="relative min-h-screen py-20 overflow-hidden">
-      {/* Background */}
+    <section id="contact" className="relative min-h-screen flex items-center py-20 overflow-hidden">
       <div className="absolute inset-0 bg-gray-100/50 dark:bg-dark-50/30">
         <BackgroundBeams />
       </div>
@@ -92,149 +93,122 @@ const Contact = () => {
       <div ref={ref} className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <motion.div
           initial="hidden"
-          animate={hasIntersected ? "visible" : "hidden"}
+          animate={hasIntersected ? 'visible' : 'hidden'}
           variants={staggerContainerVariant}
-          className="max-w-4xl mx-auto"
+          className="max-w-6xl mx-auto grid lg:grid-cols-2 gap-10 lg:gap-16 items-center"
         >
-          {/* Section Title */}
-          <motion.div variants={staggerItemVariant} className="text-center mb-16">
+          {/* Left — editorial CTA + channels */}
+          <motion.div variants={staggerItemVariant}>
             <div className="font-mono text-xs sm:text-sm tracking-[0.3em] uppercase text-cyan-500 mb-3">
               {'// Contact'}
             </div>
-            <h2 className="text-4xl sm:text-5xl md:text-6xl font-bold mb-4">
-              Get in <span className="bg-clip-text text-transparent bg-gradient-to-r from-brand via-cyan-500 to-azure">Touch</span>
+            <h2 className="text-4xl sm:text-5xl md:text-6xl font-black tracking-tight leading-[1.05] mb-5">
+              Let's build<br />
+              <span className="bg-clip-text text-transparent bg-gradient-to-r from-brand via-cyan-500 to-azure">something.</span>
             </h2>
-            <p className="text-lg text-gray-600 dark:text-white/70 max-w-2xl mx-auto">
+            <p className="text-lg text-gray-600 dark:text-white/70 max-w-md mb-8">
               {contactContent.description}
             </p>
-            <div className="w-20 h-1 bg-gradient-to-r from-magenta to-cyan-500 mx-auto rounded-full mt-4" />
+
+            {/* channels panel */}
+            <div className="rounded-2xl border border-gray-900/15 dark:border-white/15 bg-white/60 dark:bg-dark-100/70 backdrop-blur-md overflow-hidden">
+              <div className="flex items-center gap-2.5 px-5 py-3.5 border-b border-gray-900/10 dark:border-white/10">
+                <span className="w-3 h-3 rounded-full bg-[#ff5f56]" />
+                <span className="w-3 h-3 rounded-full bg-[#ffbd2e]" />
+                <span className="w-3 h-3 rounded-full bg-[#27c93f]" />
+                <span className="ml-2 font-mono text-sm text-gray-500 dark:text-white/50">contact.channels</span>
+              </div>
+              <div className="p-5 sm:p-6 font-mono text-sm sm:text-base space-y-3">
+                {channels.map(({ key, value, href, Icon }) => (
+                  <a
+                    key={key}
+                    href={href}
+                    target={href.startsWith('mailto') ? undefined : '_blank'}
+                    rel="noopener noreferrer"
+                    className="group grid grid-cols-[82px_1fr] gap-4 items-center hover:translate-x-1 transition-transform"
+                  >
+                    <span className="text-brand tracking-wide">{key}</span>
+                    <span className="flex items-center gap-2 text-gray-900 dark:text-white group-hover:text-cyan-500 transition-colors">
+                      <Icon className="w-4 h-4 flex-shrink-0" />
+                      <span className="truncate">{value}</span>
+                      <IconExternalLink className="w-3.5 h-3.5 opacity-0 group-hover:opacity-60 transition-opacity" />
+                    </span>
+                  </a>
+                ))}
+                <div className="grid grid-cols-[82px_1fr] gap-4 items-center">
+                  <span className="text-brand tracking-wide">based</span>
+                  <span className="text-gray-900 dark:text-white">Pittsburgh, PA</span>
+                </div>
+                <div className="grid grid-cols-[82px_1fr] gap-4 items-center pt-1">
+                  <span className="text-brand tracking-wide">status</span>
+                  <span className="text-gray-900 dark:text-white flex items-center">
+                    <span className="w-2.5 h-2.5 rounded-full bg-brand shadow-[0_0_10px_#15e6a0] mr-2.5" />
+                    open to connect
+                    <span className="inline-block w-[9px] h-[17px] bg-cyan-500 ml-1.5 align-middle animate-[blink_1.1s_steps(1)_infinite]" />
+                  </span>
+                </div>
+              </div>
+            </div>
           </motion.div>
 
-          {/* Contact Form */}
-          <motion.div
-            variants={staggerItemVariant}
-            className="bg-gray-900/5 dark:bg-white/5 backdrop-blur-lg border border-gray-900/10 dark:border-white/10 rounded-2xl p-8 md:p-12"
-          >
-            <form onSubmit={handleSubmit} className="space-y-6">
-              {/* Name Input */}
-              <div>
-                <label htmlFor="name" className="block text-gray-900 dark:text-white font-medium mb-2">
-                  Name
-                </label>
-                <div className="relative">
-                  <div className="absolute left-4 top-1/2 transform -translate-y-1/2 text-gray-500 dark:text-white/50">
-                    <IconUser className="w-5 h-5" />
-                  </div>
-                  <input
-                    type="text"
-                    id="name"
-                    name="name"
-                    value={formData.name}
-                    onChange={handleChange}
-                    className="w-full bg-gray-900/5 dark:bg-white/5 border border-gray-900/10 dark:border-white/10 rounded-lg px-12 py-4 text-gray-900 dark:text-white placeholder-gray-500 dark:placeholder-white/30 focus:outline-none focus:border-magenta transition-colors"
-                    placeholder="Your name"
-                    required
-                  />
-                </div>
+          {/* Right — message form */}
+          <motion.div variants={staggerItemVariant}>
+            <div className="rounded-2xl border border-gray-900/15 dark:border-white/15 bg-white/60 dark:bg-dark-100/70 backdrop-blur-md overflow-hidden">
+              <div className="flex items-center gap-2.5 px-5 py-3.5 border-b border-gray-900/10 dark:border-white/10">
+                <span className="w-3 h-3 rounded-full bg-[#ff5f56]" />
+                <span className="w-3 h-3 rounded-full bg-[#ffbd2e]" />
+                <span className="w-3 h-3 rounded-full bg-[#27c93f]" />
+                <span className="ml-2 font-mono text-sm text-gray-500 dark:text-white/50">new_message</span>
               </div>
-
-              {/* Email Input */}
-              <div>
-                <label htmlFor="email" className="block text-gray-900 dark:text-white font-medium mb-2">
-                  Email
-                </label>
-                <div className="relative">
-                  <div className="absolute left-4 top-1/2 transform -translate-y-1/2 text-gray-500 dark:text-white/50">
-                    <IconMail className="w-5 h-5" />
-                  </div>
-                  <input
-                    type="email"
-                    id="email"
-                    name="email"
-                    value={formData.email}
-                    onChange={handleChange}
-                    className="w-full bg-gray-900/5 dark:bg-white/5 border border-gray-900/10 dark:border-white/10 rounded-lg px-12 py-4 text-gray-900 dark:text-white placeholder-gray-500 dark:placeholder-white/30 focus:outline-none focus:border-magenta transition-colors"
-                    placeholder="your.email@example.com"
-                    required
-                  />
+              <form onSubmit={handleSubmit} className="p-6 sm:p-8 space-y-5">
+                <div>
+                  <label htmlFor="name" className={labelClass}>Name</label>
+                  <input type="text" id="name" name="name" value={formData.name} onChange={handleChange} className={inputClass} placeholder="Your name" required />
                 </div>
-              </div>
-
-              {/* Message Input */}
-              <div>
-                <label htmlFor="message" className="block text-gray-900 dark:text-white font-medium mb-2">
-                  Message
-                </label>
-                <div className="relative">
-                  <div className="absolute left-4 top-4 text-gray-500 dark:text-white/50">
-                    <IconMessage className="w-5 h-5" />
-                  </div>
-                  <textarea
-                    id="message"
-                    name="message"
-                    value={formData.message}
-                    onChange={handleChange}
-                    rows="6"
-                    className="w-full bg-gray-900/5 dark:bg-white/5 border border-gray-900/10 dark:border-white/10 rounded-lg px-12 py-4 text-gray-900 dark:text-white placeholder-gray-500 dark:placeholder-white/30 focus:outline-none focus:border-magenta transition-colors resize-none"
-                    placeholder="Your message..."
-                    required
-                  />
+                <div>
+                  <label htmlFor="email" className={labelClass}>Email</label>
+                  <input type="email" id="email" name="email" value={formData.email} onChange={handleChange} className={inputClass} placeholder="your.email@example.com" required />
                 </div>
-              </div>
+                <div>
+                  <label htmlFor="message" className={labelClass}>Message</label>
+                  <textarea id="message" name="message" value={formData.message} onChange={handleChange} rows="5" className={`${inputClass} resize-none`} placeholder="Your message..." required />
+                </div>
 
-              {/* Status Message */}
-              {status.message && (
-                <motion.div
-                  initial={{ opacity: 0, y: -10 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  className={`flex items-center gap-2 p-4 rounded-lg ${
-                    status.type === 'success'
-                      ? 'bg-green-500/20 border border-green-500/30 text-green-700 dark:text-green-400'
-                      : 'bg-red-500/20 border border-red-500/30 text-red-700 dark:text-red-400'
-                  }`}
+                {status.message && (
+                  <motion.div
+                    initial={{ opacity: 0, y: -10 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    className={`flex items-center gap-2 p-3.5 rounded-lg text-sm ${
+                      status.type === 'success'
+                        ? 'bg-brand/15 border border-brand/30 text-brand'
+                        : 'bg-red-500/15 border border-red-500/30 text-red-600 dark:text-red-400'
+                    }`}
+                  >
+                    {status.type === 'success' ? <IconCheck className="w-5 h-5" /> : <IconX className="w-5 h-5" />}
+                    <span>{status.message}</span>
+                  </motion.div>
+                )}
+
+                <button
+                  type="submit"
+                  disabled={isSubmitting}
+                  className="w-full px-7 py-3.5 rounded-full font-semibold text-sm text-dark bg-gradient-to-r from-brand to-azure hover:-translate-y-0.5 hover:shadow-[0_0_28px_rgba(21,230,160,0.4)] transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:translate-y-0"
                 >
-                  {status.type === 'success' ? (
-                    <IconCheck className="w-5 h-5" />
-                  ) : (
-                    <IconX className="w-5 h-5" />
-                  )}
-                  <span>{status.message}</span>
-                </motion.div>
-              )}
-
-              {/* Submit Button */}
-              <MovingBorderButton
-                type="submit"
-                disabled={isSubmitting}
-                className="w-full px-8 py-4 text-white font-medium disabled:opacity-50 disabled:cursor-not-allowed"
-                containerClassName="rounded-lg w-full"
-              >
-                <span className="flex items-center justify-center gap-2">
-                  {isSubmitting ? (
-                    <>
-                      <div className="w-5 h-5 border-2 border-white/30 border-t-white rounded-full animate-spin" />
-                      Sending...
-                    </>
-                  ) : (
-                    <>
-                      <IconSend className="w-5 h-5" />
-                      Send Message
-                    </>
-                  )}
-                </span>
-              </MovingBorderButton>
-            </form>
-
-            {/* Alternative Contact */}
-            <div className="mt-8 pt-8 border-t border-gray-900/10 dark:border-white/10 text-center">
-              <p className="text-gray-600 dark:text-white/60 mb-4">Or reach out directly via email</p>
-              <a
-                href={`mailto:${contactContent.email}`}
-                className="text-magenta hover:text-cyan-500 transition-colors font-medium inline-flex items-center gap-2"
-              >
-                <IconMail className="w-5 h-5" />
-                {contactContent.email}
-              </a>
+                  <span className="flex items-center justify-center gap-2">
+                    {isSubmitting ? (
+                      <>
+                        <span className="w-5 h-5 border-2 border-dark/30 border-t-dark rounded-full animate-spin" />
+                        Sending...
+                      </>
+                    ) : (
+                      <>
+                        <IconSend className="w-5 h-5" />
+                        Send Message
+                      </>
+                    )}
+                  </span>
+                </button>
+              </form>
             </div>
           </motion.div>
         </motion.div>
