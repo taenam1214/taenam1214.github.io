@@ -18,7 +18,6 @@ const About = () => {
       const element = statsRef.current[index];
       if (!element) return;
 
-      // Extract number from value (e.g., "1.8 Million+" -> 1.8, "20+" -> 20)
       const numMatch = stat.value.match(/^[\d.]+/);
       if (!numMatch) {
         element.innerText = stat.value;
@@ -26,7 +25,7 @@ const About = () => {
       }
 
       const numValue = parseFloat(numMatch[0]);
-      const suffix = stat.value.slice(numMatch[0].length); // e.g., " Million+" or "+"
+      const suffix = stat.value.slice(numMatch[0].length);
 
       gsap.fromTo(
         element,
@@ -46,9 +45,13 @@ const About = () => {
     });
   }, [hasIntersected]);
 
+  // Split the bio into an enlarged lead sentence + the remainder.
+  const firstStop = aboutContent.bio.indexOf('. ');
+  const lead = firstStop > -1 ? aboutContent.bio.slice(0, firstStop + 1) : aboutContent.bio;
+  const rest = firstStop > -1 ? aboutContent.bio.slice(firstStop + 2) : '';
+
   return (
     <section id="about" className="relative min-h-screen flex items-center justify-center py-20 overflow-hidden">
-      {/* Background Effects */}
       <div className="absolute inset-0 bg-gray-100/50 dark:bg-dark-50/30">
         <BackgroundBeams />
       </div>
@@ -56,61 +59,104 @@ const About = () => {
       <div ref={ref} className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <motion.div
           initial="hidden"
-          animate={hasIntersected ? "visible" : "hidden"}
+          animate={hasIntersected ? 'visible' : 'hidden'}
           variants={staggerContainerVariant}
           className="max-w-6xl mx-auto"
         >
           {/* Section Title */}
-          <motion.div variants={staggerItemVariant} className="text-center mb-16">
+          <motion.div variants={staggerItemVariant} className="mb-14">
             <div className="font-mono text-xs sm:text-sm tracking-[0.3em] uppercase text-cyan-500 mb-3">
               {'// Profile'}
             </div>
-            <h2 className="text-4xl sm:text-5xl md:text-6xl font-bold mb-4">
+            <h2 className="text-4xl sm:text-5xl md:text-6xl font-bold">
               About <span className="bg-clip-text text-transparent bg-gradient-to-r from-brand via-cyan-500 to-azure">Me</span>
             </h2>
-            <div className="w-20 h-1 bg-gradient-to-r from-magenta to-cyan-500 mx-auto rounded-full" />
           </motion.div>
 
-          {/* Bio Card */}
-          <motion.div
+          {/* Big lead statement — full width */}
+          <motion.p
             variants={staggerItemVariant}
-            className="bg-gray-900/5 dark:bg-white/5 backdrop-blur-lg border border-gray-900/10 dark:border-white/10 rounded-2xl p-8 md:p-12 mb-12 hover:border-magenta/50 transition-colors duration-300"
+            className="text-3xl sm:text-4xl md:text-5xl font-bold leading-[1.15] tracking-tight text-gray-900 dark:text-white max-w-6xl text-balance mb-12"
           >
-            <p className="text-lg md:text-xl text-gray-700 dark:text-white/80 leading-relaxed mb-8">
-              {aboutContent.bio}
-            </p>
+            {lead}
+          </motion.p>
 
-            {/* Highlights */}
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-              {aboutContent.highlights.map((highlight, index) => (
-                <div
-                  key={index}
-                  className="flex items-center space-x-3 text-gray-600 dark:text-white/70"
-                >
-                  <div className="w-2 h-2 bg-magenta rounded-full flex-shrink-0" />
-                  <span>{highlight}</span>
+          {/* Body + Focus (left)  ·  Spec card (right) */}
+          <div className="grid lg:grid-cols-12 gap-10 lg:gap-12 items-start mb-16">
+            <motion.div variants={staggerItemVariant} className="lg:col-span-7">
+              {rest && (
+                <p className="text-lg text-gray-600 dark:text-white/70 leading-relaxed mb-8">
+                  {rest}
+                </p>
+              )}
+
+              <div className="font-mono text-xs tracking-[0.2em] uppercase text-cyan-500 mb-4">
+                Focus Areas
+              </div>
+              <div className="grid sm:grid-cols-2 gap-x-6 gap-y-3">
+                {aboutContent.highlights.map((highlight, index) => (
+                  <div key={index} className="flex items-start gap-3 text-gray-700 dark:text-white/75">
+                    <span className="mt-2 w-1.5 h-1.5 rounded-full bg-brand flex-shrink-0 shadow-[0_0_8px_#15e6a0]" />
+                    <span>{highlight}</span>
+                  </div>
+                ))}
+              </div>
+            </motion.div>
+
+            {/* profile.config spec card */}
+            <motion.div variants={staggerItemVariant} className="lg:col-span-5">
+              <div className="rounded-2xl border border-gray-900/15 dark:border-white/15 bg-white/60 dark:bg-dark-100/70 backdrop-blur-md overflow-hidden">
+                <div className="flex items-center gap-2.5 px-6 py-4 border-b border-gray-900/10 dark:border-white/10">
+                  <span className="w-3.5 h-3.5 rounded-full bg-[#ff5f56]" />
+                  <span className="w-3.5 h-3.5 rounded-full bg-[#ffbd2e]" />
+                  <span className="w-3.5 h-3.5 rounded-full bg-[#27c93f]" />
+                  <span className="ml-2.5 font-mono text-sm text-gray-500 dark:text-white/50">profile.config</span>
                 </div>
-              ))}
-            </div>
-          </motion.div>
+                <div className="p-7 sm:p-8 font-mono text-base sm:text-lg space-y-4">
+                  {[
+                    ['name', 'Taenam Kim'],
+                    ['role', 'Software Engineer'],
+                    ['based', 'Pittsburgh, PA'],
+                    ['stack', 'Full-Stack · Systems · AI'],
+                    ['now', '@ TeleTracking — Foundry AI'],
+                  ].map(([k, v]) => (
+                    <div key={k} className="grid grid-cols-[88px_1fr] gap-4">
+                      <span className="text-brand tracking-wide">{k}</span>
+                      <span className="text-gray-900 dark:text-white">{v}</span>
+                    </div>
+                  ))}
+                  <div className="grid grid-cols-[88px_1fr] gap-4 pt-1">
+                    <span className="text-brand tracking-wide">status</span>
+                    <span className="text-gray-900 dark:text-white flex items-center">
+                      <span className="w-2.5 h-2.5 rounded-full bg-brand shadow-[0_0_10px_#15e6a0] mr-2.5" />
+                      building &amp; shipping
+                      <span className="inline-block w-[10px] h-[20px] bg-cyan-500 ml-1.5 align-middle animate-[blink_1.1s_steps(1)_infinite]" />
+                    </span>
+                  </div>
+                </div>
+              </div>
+            </motion.div>
+          </div>
 
           {/* Stats */}
           <motion.div
             variants={staggerItemVariant}
-            className="grid grid-cols-2 md:grid-cols-4 gap-6"
+            className="grid grid-cols-2 md:grid-cols-4 gap-px rounded-2xl overflow-hidden border border-gray-900/10 dark:border-white/10 bg-gray-900/10 dark:bg-white/10"
           >
             {aboutContent.stats.map((stat, index) => (
               <div
                 key={index}
-                className="bg-gray-900/5 dark:bg-white/5 backdrop-blur-lg border border-gray-900/10 dark:border-white/10 rounded-2xl p-6 text-center hover:border-magenta/50 hover:scale-105 transition-all duration-300"
+                className="bg-white dark:bg-dark-100 p-6 md:p-8 text-center group hover:bg-gray-50 dark:hover:bg-dark-50 transition-colors duration-300"
               >
                 <div
                   ref={(el) => (statsRef.current[index] = el)}
-                  className="text-3xl md:text-4xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-magenta to-cyan-500 mb-2"
+                  className="text-4xl md:text-5xl font-black bg-clip-text text-transparent bg-gradient-to-r from-brand via-cyan-500 to-azure mb-2 tracking-tight"
                 >
                   {stat.value}
                 </div>
-                <div className="text-sm md:text-base text-gray-500 dark:text-white/60">{stat.label}</div>
+                <div className="font-mono text-[11px] sm:text-xs uppercase tracking-wider text-gray-500 dark:text-white/55">
+                  {stat.label}
+                </div>
               </div>
             ))}
           </motion.div>
