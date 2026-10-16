@@ -1,6 +1,5 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import { motion, useScroll, useSpring } from 'framer-motion';
-import Lenis from '@studio-freight/lenis';
 import { ThemeProvider } from './context/ThemeContext';
 import CustomCursor from './components/layout/CustomCursor';
 import Navigation from './components/layout/Navigation';
@@ -21,22 +20,6 @@ function AppContent() {
     damping: 30,
     restDelta: 0.001
   });
-
-  // Lenis inertial smooth scrolling
-  useEffect(() => {
-    const lenis = new Lenis({ duration: 1.1, smoothWheel: true });
-    let rafId;
-    const raf = (time) => {
-      lenis.raf(time);
-      rafId = requestAnimationFrame(raf);
-    };
-    rafId = requestAnimationFrame(raf);
-
-    return () => {
-      cancelAnimationFrame(rafId);
-      lenis.destroy();
-    };
-  }, []);
 
   return (
     <div className="bg-white dark:bg-dark text-gray-900 dark:text-white min-h-screen relative overflow-x-hidden transition-colors duration-300">
