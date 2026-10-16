@@ -8,6 +8,12 @@
 */
 
 /**
+ * @license
+ * Copyright 2010-2025 Three.js Authors
+ * SPDX-License-Identifier: MIT
+ */
+
+/**
  * @license @tabler/icons-react v3.36.1 - MIT
  *
  * This source code is licensed under the MIT license.
